@@ -4,10 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const dogImages = writable([]);
 export let breedsList = [];
-export let breed = 'hound'
+export const breed = 'hound'
 let limit = 3
 
-const fetchDogs = async () => {
+export const fetchDogs = async (breed) => {
     const url = 'https://dog.ceo/api/breed/' + breed + '/images/random/' + limit;
     const res = await fetch(url);
     const data = await res.json();
@@ -20,7 +20,7 @@ const fetchDogs = async () => {
     )
     dogImages.set(loadedDogs)
 }
-fetchDogs();
+fetchDogs(breed);
 
 
 const fetchBreeds = async () => {
@@ -35,8 +35,6 @@ const fetchBreeds = async () => {
         }
     }
     )
-    
-    
 }
 fetchBreeds();
 

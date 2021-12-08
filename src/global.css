@@ -5,6 +5,10 @@
     font-family: 'roboto mono';
 }
 
+.container {
+    max-width: 50%;
+}
+
 .active {
     color: green;
 }

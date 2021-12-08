@@ -3,14 +3,15 @@
 </script> -->
 
 <script>
-	import {dogImages, breedsList, breed} from '../stores/store.js';
+	import {dogImages, breedsList, fetchDogs} from '../stores/store.js';
 	import {scale} from 'svelte/transition';
-	
-	const handleChange = () => {
-	breed.update(selectValue)
-	}
 
-	$: selectValue = breed
+	let selected
+
+	const handleChange = () => {
+		fetchDogs(selected)
+	}
+	
 </script>
 
 
@@ -19,23 +20,24 @@
 </svelte:head>
 
 <h1>SvelteDogs</h1>
+<h3 style="background-color: teal">Getting dogs from the dogs API</h3>
 
 <div class="picker">
-	<h3>select dog breed: </h3>
-	<p>{selectValue}</p>
-	<select class="breed-select" bind:value={selectValue} on:change={handleChange}>
-		<option value={selectValue}>{selectValue}</option>
+	<h3>Select breed: </h3>
+	
+	<select bind:value={selected} class="breed-select" on:change={handleChange}>
+
 		{#each breedsList as breed (breed.id)}
 		<option value={breed.name}>{breed.name}</option>
 		{/each}
 	</select>
 </div>
 
-<!-- image list is generating twice -->
-<div class="images">
+<!-- image list is generating twice on refresh for some reason. is it because svelte deliveres the previously rendered page? It's always the same 3 images delivered-->
+<div >
 	{#each $dogImages as image (image.id)}
 	<img src={image.url} width='200' alt="dogImage" in:scale />
-{/each}
+	{/each}
 </div>
 
 <style>
@@ -43,12 +45,9 @@
 		color: white;
 		background-color: grey;
 	}
-	.images {
-		/* align-items: flex-start;
-		border: 1px white solid; */
-	}
+
 	.picker {
 		display: flex;
-		justify-content: space-between;
+		
 	}
 </style>
