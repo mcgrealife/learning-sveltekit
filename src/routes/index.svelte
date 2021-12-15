@@ -19,8 +19,8 @@
 	<title>The now</title>
 </svelte:head>
 
-<h1>SvelteDogs</h1>
-<h3 style="background-color: teal">Getting dogs from the dogs API</h3>
+<h1>SvelteDogs 🐾</h1>
+<h3 style="background-color: teal">Getting dogs from the 🐕 API</h3>
 
 <div class="picker">
 	<h3>Select breed: </h3>

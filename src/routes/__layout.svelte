@@ -2,7 +2,7 @@
     import '../global.css'
     import Nav from '../components/Nav.svelte'
 </script>
-<Nav />
+<!-- <Nav /> -->
 <main class="container"> 
     <slot />
 </main>
