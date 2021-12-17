@@ -12,7 +12,7 @@
             <a href="/dogQuiz">Dog Quiz</a>
         </li>
         <li>
-            <a href="/past">Profile</a>
+            <a href="/profile">Profile</a>
         </li>
         <!-- <li>
             <a href="/future">Future</a>
@@ -23,11 +23,12 @@
 <style>
     .nav {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        align-content: center;
         list-style-type: none;
         padding: 100;
         margin: 10;
-        width: 50%;
+        width: 100%;
     }
 
     a {

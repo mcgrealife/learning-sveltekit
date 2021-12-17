@@ -7,10 +7,19 @@
 	import {scale} from 'svelte/transition';
 
 	let selected
+	const setSelected = async (i) => {
+		selected = await i[0].name
+		console.log(selected)
+	}
+	setSelected(breedsList)
+
+	console.log(selected)
 
 	const handleChange = () => {
 		fetchDogs(selected)
 	}
+
+
 	
 </script>
 
@@ -25,12 +34,20 @@
 <div class="picker">
 	<h3>Select breed: </h3>
 	
-	<select bind:value={selected} class="breed-select" on:change={handleChange}>
 
-		{#each breedsList as breed (breed.id)}
-		<option value={breed.name}>{breed.name}</option>
-		{/each}
-	</select>
+	{#await breedsList}
+	waiting
+	{:then data}
+	
+	
+		<select bind:value={selected} class="breed-select" on:change={handleChange}>
+			{#each data as breed (breed.id)}
+			<option value={breed.name}>{breed.name}</option>
+			{/each}
+		</select>
+	{/await}
+	
+	
 </div>
 
 <!-- image list is generating twice on refresh for some reason. is it because svelte deliveres the previously rendered page? It's always the same 3 images delivered-->

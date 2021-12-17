@@ -1,6 +1,6 @@
 <script>
     import '../global.css'
-    import Nav from '../components/Nav.svelte'
+    import Nav from '../lib/Nav.svelte'
 </script>
 <Nav />
 <main class="container"> 
