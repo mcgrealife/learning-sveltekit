@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 export const dogImages = writable([]);
+
 export let breedsList = [];
 export const breed = 'hound'
 let limit = 3
@@ -21,6 +22,28 @@ export const fetchDogs = async (breed) => {
     dogImages.set(loadedDogs)
 }
 fetchDogs(breed);
+
+export const fetchRandomDog = async (num) => {
+    const url = 'https://dog.ceo/api/breeds/image/random/' + num;
+    const res = await fetch(url);
+    const data = await res.json();
+    const loadedDogs = data.message.map(image => {
+        const breed = image.substring(
+            image.indexOf('breeds/')+7,
+            image.lastIndexOf('/')
+        );
+        return {
+            id: { uuidv4 },
+            url: image,
+            breed: breed
+        }
+    }
+    )
+    return loadedDogs
+    // randomDogImages.set(loadedDogs)
+
+}
+// fetchRandomDog();
 
 
 const fetchBreeds = async () => {
