@@ -32,32 +32,39 @@ async function getFavDogs() {
 	<h1>Fetching your favorite dogs! 🐕</h1>
 {:then dogs} 
 <h1>Your favorite breeds</h1>
+<h3>A list of breeds clicked on the dogQuiz</h3>
 {#each dogs as dog (dog.id)}
 <li>{dog.breed}: {getOccurences(dogs, dog.breed)}</li>
 {/each}
-<div class="imageGrid">
+<!-- <div class="imageGrid">
 {#each dogs as dog (dog.id)}
 
 	<img class="image" src={dog.favDogImgUrl} alt={dog.id}>
 
 {/each}
-</div>
+</div> -->
 	
 {/await}
 
 <style>
 
-	.image {
+	h3 {
+		color: white;
+	}
+
+	/* .image {
 		max-width: 50%;
-		}
-.imageGrid {
+		} */
+/* .imageGrid {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-}
+} */
 
 li {
 	list-style: url('dog.svg');
+	font-size: 25px;
+	color: silver;
 }
 
 </style>

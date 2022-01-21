@@ -24,11 +24,11 @@
     .nav {
         display: flex;
         justify-content: space-evenly;
-        align-content: center;
+        align-content: left;
         list-style-type: none;
         padding: 100;
         margin: 10;
-        width: 100%;
+        width: 50%;
     }
 
     a {

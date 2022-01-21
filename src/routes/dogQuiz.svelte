@@ -115,7 +115,7 @@
     /* align-content: flex-start; */
   }
   .image {
-    max-width: 50%;
+    max-width: 200px;
   }
 
   .image:hover {
@@ -132,6 +132,6 @@
     /* hearts fly on hover */
   }
 
-  .woof {
-  }
+  /* .woof {
+  } */
 </style>

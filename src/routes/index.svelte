@@ -8,8 +8,15 @@
 
 	let selected
 	const setSelected = async (i) => {
-		selected = await i[0].name
+
+		if (i == undefined) {
+			console.log("breedsList is undefined")
+			throw new Error("breedsList is undefined");
+		} else {
+
+		selected = await i[0].name ?? 'try again'
 		console.log(selected)
+		}
 	}
 	setSelected(breedsList)
 
@@ -29,22 +36,22 @@
 </svelte:head>
 
 <h1>SvelteDogs 🐾</h1>
-<h3 style="background-color: teal">Getting dogs from the 🐕 API</h3>
+<h3 style="background-color: teal; color: white">Getting dogs from the 🐕 API</h3>
 
 <div class="picker">
-	<h3>Select breed: </h3>
+	<h3 style="color: white">Select breed: </h3>
 	
 
 	{#await breedsList}
 	waiting
 	{:then data}
-	
-	
 		<select bind:value={selected} class="breed-select" on:change={handleChange}>
 			{#each data as breed (breed.id)}
-			<option value={breed.name}>{breed.name}</option>
+			<option value={breed.name ?? "breedName1"}>{breed.name ?? "BreedName1"}</option>
 			{/each}
 		</select>
+		{:catch error}
+			<p>there was an error</p>
 	{/await}
 	
 	
@@ -57,7 +64,16 @@
 	{/each}
 </div>
 
+
+<div class="notice">
+	<p><i>🚧 If the dropdown isn't showing, navigate to another page and back.🚧</i></p>
+</div>
 <style>
+
+	.notice {
+		/* max-width: 50%; */
+		color: silver;
+	}
 	.breed-select {
 		color: white;
 		background-color: grey;

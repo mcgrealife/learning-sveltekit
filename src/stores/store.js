@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const dogImages = writable([]);
 
-export let breedsList = [];
+export let breedsList = [{id: {uuidv4}, name: "breedName"}];
 export const breed = 'hound'
 let limit = 3
 
@@ -54,7 +54,7 @@ const fetchBreeds = async () => {
     breedsList = loadedBreeds.map(breed => {
         return {
             id: { uuidv4 },
-            name: breed
+            name: breed ?? "try again"
         }
     }
     )
